@@ -17,7 +17,7 @@
 	<div th:fragment="content" th:remove="tag">
 		<div class="header lighter smaller blue">
 			<h3><span class="glyphicon glyphicon-th-list"></span>&nbsp;模板列表<small>（<span th:text="${#lists.size(datas)}"></span>）</small></h3>
-			<div th:replace="admin/role/nav :: content" th:remove="tag"></div>
+			<div th:replace="admin/proveTemplate/nav :: content" th:remove="tag"></div>
 		</div>
 
 		<div class="table-responsive">

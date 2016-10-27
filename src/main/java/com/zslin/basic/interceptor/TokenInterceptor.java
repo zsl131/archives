@@ -1,7 +1,7 @@
 package com.zslin.basic.interceptor;
 
-import com.zslin.basic.auth.annotations.Token;
-import com.zslin.basic.auth.tools.TokenTools;
+import com.zslin.basic.annotations.Token;
+import com.zslin.basic.tools.TokenTools;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;

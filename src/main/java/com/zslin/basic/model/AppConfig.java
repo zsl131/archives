@@ -8,7 +8,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name="b_app_config")
+@Table(name="a_app_config")
 public class AppConfig {
 
 	@Id
@@ -38,10 +38,6 @@ public class AppConfig {
 	/** 页末联系人 */
 	private String contant;
 
-	/** 是否显示支付二维码 */
-	@Column(name = "show_pay")
-	private Integer showPay;
-
 	/** 管理员邮箱 */
 	@Column(name = "admin_email")
 	private String adminEmail;
@@ -52,14 +48,6 @@ public class AppConfig {
 
 	public void setAdminEmail(String adminEmail) {
 		this.adminEmail = adminEmail;
-	}
-
-	public Integer getShowPay() {
-		return showPay;
-	}
-
-	public void setShowPay(Integer showPay) {
-		this.showPay = showPay;
 	}
 
 	public String getContant() {

@@ -1,6 +1,5 @@
 package com.zslin.basic.service;
 
-import com.zslin.basic.iservice.IAppConfigService;
 import com.zslin.basic.model.AppConfig;
 import com.zslin.basic.tools.MyBeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

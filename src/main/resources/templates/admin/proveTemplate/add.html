@@ -3,23 +3,25 @@
 	  xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:th="http://www.thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	  layout:decorator="fragments/adminModel">
+	  layout:decorator="fragments/adminModel1">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<script type="text/javascript" src="/validate/bootstrapValidator.js"></script>
-		<title>添加角色</title>
+		<title>添加模板</title>
 	</head>
 	<body>
 		<div th:fragment="content" th:remove="tag">
 			<div class="header lighter smaller blue">
-				<h3><i class="icon-plus"></i>&nbsp;添加角色 </h3>
-				<div th:replace="admin/role/nav :: content" th:remove="tag"></div>
+				<h3><i class="icon-plus"></i>&nbsp;新建模板 </h3>
+				<div th:replace="admin/proveTemplate/nav :: content" th:remove="tag"></div>
 			</div>
 
-			<form method="POST" th:object="${role}" id="dataForm">
+			<form method="POST" th:object="${proveTemplate}" id="dataForm">
 				<div class="form-group form-group-lg">
-					<label for="name">角色名称</label>
-					<input type="text" name="name" th:value="${role.name}" class="form-control" id="name" placeholder="请输入角色名称"/>
+					<input type="text" name="name" th:value="${proveTemplate.name}" class="form-control text-center" id="name" placeholder="请输入模板名称名称，如：贫困证明"/>
+				</div>
+				<div>
+					<textarea></textarea>
 				</div>
 				<input type="hidden" name="token" value="${session.token}"/>
 				<button type="submit" class="btn btn-primary">确定提交</button>

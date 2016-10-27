@@ -1,7 +1,7 @@
 package com.zslin.basic.interceptor;
 
-import com.zslin.basic.iservice.IAppConfigService;
 import com.zslin.basic.model.AppConfig;
+import com.zslin.basic.service.IAppConfigService;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

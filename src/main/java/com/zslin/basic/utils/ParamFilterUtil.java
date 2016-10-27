@@ -1,7 +1,5 @@
 package com.zslin.basic.utils;
 
-import com.zslin.basic.utils.BaseSearch;
-import com.zslin.basic.utils.SearchDto;
 import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.ui.Model;
 
