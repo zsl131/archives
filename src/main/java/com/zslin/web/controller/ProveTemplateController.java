@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 /**
  * Created by 钟述林 393156105@qq.com on 2016/10/21 14:22.
@@ -54,6 +55,7 @@ public class ProveTemplateController {
     public String add(Model model, ProveTemplate proveTemplate, HttpServletRequest request) {
         if(TokenTools.isNoRepeat(request)) { //不是重复提交
             proveTemplate.setSn(PinyinToolkit.cn2Spell(proveTemplate.getName(), ""));
+            proveTemplate.setCreateDate(new Date());
             proveTemplateService.save(proveTemplate);
         }
         return "redirect:/admin/proveTemplate/list";

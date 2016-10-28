@@ -1,0 +1,11 @@
+textarea.form-control {
+    min-height:260px; resize:none;
+}
+
+.margin-15 {
+    padding-top:15px;
+}
+
+.insert-remind {
+    color:#777; line-height:30px; padding-top:5px;
+}
