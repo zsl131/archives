@@ -25,7 +25,7 @@ public class Team {
     @Column(name = "captain_phone")
     private String captainPhone;
 
-    /** 长队身份证号 */
+    /** 队长身份证号 */
     @Column(name = "captain_identity")
     private String captainIdentity;
 

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="fragments/adminModel">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript" src="/basic/validate/bootstrapValidator.js"></script>
+		<link type="text/css" rel="stylesheet" href="/admin/app/proveTemplate-add.css"/>
+		<script type="text/javascript" src="/admin/app/cursor-position.js"></script>
+		<title>添加组/队</title>
+		<script type="text/javascript">
+			$(function() {
+				$(".people-info button.btn-info").click(function() {
+					var val = $(this).val();
+					$("textarea[name='content']").insertAtCursor(val);
+				});
+
+				$('#dataForm').bootstrapValidator({
+					//		        live: 'disabled',
+					message: '验证不通过',
+					feedbackIcons: {
+						valid: 'glyphicon glyphicon-ok',
+						invalid: 'glyphicon glyphicon-remove',
+						validating: 'glyphicon glyphicon-refresh'
+					},
+					fields: {
+						name: {
+							validators: {
+								notEmpty: {
+									message: '组/队名称不能为空'
+								}
+							}
+						},
+						captainName: {
+							validators: {
+								notEmpty: {
+									message: '队长姓名不能为空'
+								}
+							}
+						},
+						captainPhone: {
+							validators: {
+								notEmpty: {
+									message: '队长电话号码不能为空'
+								}
+							}
+						},
+						captainIdentity: {
+							validators: {
+								notEmpty: {
+									message: '队长身份证不能为空'
+								},
+								regexp: {
+									regexp: /(^\d{15}$)|(^\d{17}([0-9]|X)$)/,
+									message: '请输入有效的身份证号码'
+								}
+							}
+						}
+					}
+				});
+
+			});
+		</script>
+	</head>
+	<body>
+		<div th:fragment="content" th:remove="tag">
+			<div class="header lighter smaller blue">
+				<h3><i class="fa fa-plus"></i>&nbsp;新建组/队</h3>
+				<div th:replace="admin/team/nav :: content" th:remove="tag"></div>
+			</div>
+			<form method="POST" th:object="${team}" id="dataForm">
+				<div class="form-group form-group-lg">
+					<input type="text" name="name" th:value="${team.name}" class="form-control" id="name" placeholder="请输入组/队名称"/>
+				</div>
+				<div class="form-group form-group-lg">
+					<input type="text" name="captainName" th:value="${team.captainName}" class="form-control" id="captainName" placeholder="请输入队长姓名"/>
+				</div>
+				<div class="form-group form-group-lg">
+					<input type="text" name="captainPhone" th:value="${team.captainPhone}" class="form-control" id="captainPhone" placeholder="请输入队长电话号码"/>
+				</div>
+				<div class="form-group form-group-lg">
+					<input type="text" name="captainIdentity" th:value="${team.captainIdentity}" class="form-control" id="captainIdentity" placeholder="请输入队长身份证"/>
+				</div>
+				<div class="margin-15">
+					<input type="hidden" name="token" value="${session.token}"/>
+					<button type="submit" class="btn btn-primary">确定提交</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
