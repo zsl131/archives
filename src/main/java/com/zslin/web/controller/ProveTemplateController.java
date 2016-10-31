@@ -33,12 +33,21 @@ public class ProveTemplateController {
     private IProveTemplateService proveTemplateService;
 
     /** 列表 */
-    @AdminAuth(name = "证明模板管理", orderNum = 1, icon="icon-list", type = "1")
+    @AdminAuth(name = "证明模板管理", orderNum = 1, icon="fa fa-cog", type = "1")
     @RequestMapping(value="list", method= RequestMethod.GET)
     public String list(Model model, Integer page, HttpServletRequest request) {
         Page<ProveTemplate> datas = proveTemplateService.findAll(new ParamFilterUtil<ProveTemplate>().buildSearch(model, request), PageableUtil.basicPage(page));
         model.addAttribute("datas", datas);
         return "admin/proveTemplate/list";
+    }
+
+    @AdminAuth(name = "开证明", orderNum = 2, icon = "fa fa-pencil-square-o", type = "2")
+    @RequestMapping(value = "addProve/{proveId}")
+    public String addProve(Model model, @PathVariable Integer proveId, HttpServletRequest request) {
+        ProveTemplate prove = proveTemplateService.findOne(proveId);
+        model.addAttribute("prove", prove);
+        model.addAttribute("curDate", new Date());
+        return "admin/proveTemplate/addProve";
     }
 
     @Token(flag= Token.READY)

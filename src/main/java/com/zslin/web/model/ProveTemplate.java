@@ -29,6 +29,17 @@ public class ProveTemplate {
     @Lob
     private String content;
 
+    /** 落款 */
+    private String signed;
+
+    public String getSigned() {
+        return signed;
+    }
+
+    public void setSigned(String signed) {
+        this.signed = signed;
+    }
+
     public Integer getId() {
         return id;
     }

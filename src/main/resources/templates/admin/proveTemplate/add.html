@@ -28,9 +28,9 @@
 
 			<form method="POST" th:object="${proveTemplate}" id="dataForm">
 				<div class="form-group form-group-lg">
-					<input type="text" name="name" th:value="${proveTemplate.name}" class="form-control text-center" id="name" placeholder="请输入模板名称名称，如：贫困证明"/>
+					<input type="text" name="name" th:value="${proveTemplate.name}" class="form-control text-center" placeholder="请输入模板名称名称，如：贫困证明"/>
 				</div>
-				<div>
+				<div class="form-group form-group-lg">
 					<textarea class="form-control" placeholder="请输入证明内容" name="content" th:text="${proveTemplate.content}"></textarea>
 				</div>
 
@@ -45,9 +45,14 @@
 					<p class="insert-remind">说明：点击上面按钮可插入变量到证明内容中。</p>
 				</div>
 
-				<div class="margin-15">
+				<div class="form-group form-group-lg">
+					<input type="text" name="signed" th:value="${proveTemplate.signed}" class="form-control text-right" placeholder="请输入显示在右下角的落款"/>
+				</div>
+
+				<div class="form-group form-group-lg">
 					<input type="hidden" name="token" value="${session.token}"/>
 					<button type="submit" class="btn btn-primary">确定提交</button>
+					<button type="button" class="btn btn-default" onclick="history.back(-1)">返回上级</button>
 				</div>
 			</form>
 			<script type="text/javascript">

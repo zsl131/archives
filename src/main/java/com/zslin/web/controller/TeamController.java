@@ -38,7 +38,7 @@ public class TeamController {
      * @param request
      * @return
      */
-    @AdminAuth(name = "组/队列表", orderNum = 1, icon="icon-list", type = "1")
+    @AdminAuth(name = "组/队管理", orderNum = 1, icon="fa fa-users", type = "1")
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public String list(Model model, Integer page, HttpServletRequest request) {
         Page<Team> datas = teamService.findAll(new ParamFilterUtil<Team>().buildSearch(model, request), PageableUtil.basicPage(page));

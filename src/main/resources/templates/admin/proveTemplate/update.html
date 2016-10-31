@@ -4,27 +4,58 @@
 	  xmlns:th="http://www.thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	  layout:decorator="fragments/adminModel">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<script type="text/javascript" src="/validate/bootstrapValidator.js"></script>
-		<title>修改角色</title>
-	</head>
-	<body>
-		<div th:fragment="content" th:remove="tag">
-			<div class="header lighter smaller blue">
-				<h3><i class="fa fa-pencil"></i>&nbsp;修改角色 </h3>
-				<div th:replace="admin/role/nav :: content" th:remove="tag"></div>
-			</div>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<script type="text/javascript" src="/basic/validate/bootstrapValidator.js"></script>
+	<link type="text/css" rel="stylesheet" href="/admin/app/proveTemplate-add.css"/>
+	<script type="text/javascript" src="/admin/app/cursor-position.js"></script>
+	<title>修改模板</title>
+	<script type="text/javascript">
+			$(function() {
+				$(".people-info button.btn-info").click(function() {
+					var val = $(this).val();
+					$("textarea[name='content']").insertAtCursor(val);
+				});
+			});
+		</script>
+</head>
+<body>
+<div th:fragment="content" th:remove="tag">
+	<div class="header lighter smaller blue">
+		<h3><i class="fa fa-pencil"></i>&nbsp;修改模板 </h3>
+		<div th:replace="admin/proveTemplate/nav :: content" th:remove="tag"></div>
+	</div>
 
-			<form method="POST" th:object="${role}" id="dataForm">
-				<div class="form-group form-group-lg">
-					<label for="name">角色名称</label>
-					<input type="text" name="name" th:value="${role.name}" class="form-control" id="name" placeholder="请输入角色名称"/>
-				</div>
-				<input type="hidden" name="token" value="${session.token}"/>
-				<button type="submit" class="btn btn-primary">确定提交</button>
-			</form>
-			<script type="text/javascript">
+	<form method="POST" th:object="${proveTemplate}" id="dataForm">
+		<div class="form-group form-group-lg">
+			<input type="text" name="name" th:value="${proveTemplate.name}" class="form-control text-center" placeholder="请输入模板名称名称，如：贫困证明"/>
+		</div>
+		<div class="form-group form-group-lg">
+			<textarea class="form-control" placeholder="请输入证明内容" name="content" th:text="${proveTemplate.content}"></textarea>
+		</div>
+
+		<div class="margin-15 people-info">
+			<button type="button" class="btn btn-danger">点击插入：</button>
+			<button type="button" value="{姓名}" class="btn btn-info">姓名</button>
+			<button type="button" value="{身份证号}" class="btn btn-info">身份证号</button>
+			<button type="button" value="{住址}" class="btn btn-info">住址</button>
+			<button type="button" value="{性别}" class="btn btn-info">性别</button>
+			<button type="button" value="{民族}" class="btn btn-info">民族</button>
+			<button type="button" value="{出生}" class="btn btn-info">出生日期</button>
+			<p class="insert-remind">说明：点击上面按钮可插入变量到证明内容中。</p>
+		</div>
+
+		<div class="form-group form-group-lg">
+			<input type="text" name="signed" th:value="${proveTemplate.signed}" class="form-control text-right" placeholder="请输入显示在右下角的落款"/>
+		</div>
+
+		<div class="form-group form-group-lg">
+			<input type="hidden" name="token" value="${session.token}"/>
+			<button type="submit" class="btn btn-primary">确定提交</button>
+			<button type="button" class="btn btn-default" onclick="history.back(-1)">返回上级</button>
+		</div>
+	</form>
+	<script type="text/javascript">
 				jQuery(function($) {
 					$('#dataForm').bootstrapValidator({
 		//		        live: 'disabled',
@@ -46,6 +77,6 @@
 					});
 				});
 			</script>
-		</div>
-	</body>
+</div>
+</body>
 </html>

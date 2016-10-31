@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="fragments/adminModel">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript" src="/basic/validate/bootstrapValidator.js"></script>
+		<link type="text/css" rel="stylesheet" href="/admin/app/proveTemplate-add.css"/>
+		<script type="text/javascript" src="/admin/app/cursor-position.js"></script>
+		<title>开证明</title>
+		<script type="text/javascript">
+			$(function() {
+				$(".people-info button.btn-info").click(function() {
+					var val = $(this).val();
+					$("textarea[name='content']").insertAtCursor(val);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div th:fragment="content" th:remove="tag">
+			<div class="header lighter smaller blue">
+				<h3><i class="fa fa-plus"></i>&nbsp;开证明 <small>（获取村民身份信息 下面二选一）</small></h3>
+				<div th:replace="admin/proveTemplate/nav :: content" th:remove="tag"></div>
+			</div>
+
+			<div class="form-group form-group-lg">
+				<div class="input-group">
+					<div class="input-group-addon">带有身份证原件：</div>
+					<div class="form-control" style="height:53px;">
+						<button type="button" class="btn btn-info"><i class="fa fa-vcard"></i> 使用精伦身份证阅读器读取信息</button>
+						<span></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group form-group-lg">
+				<div class="input-group">
+					<div class="input-group-addon">未带身份证原件：</div>
+					<input name="identity" id="identity" class="form-control" placeholder="输入村民身份证号"/>
+					<div class="input-group-addon" style="cursor:pointer; background:#5bc0de; color:#FFF;"><i class="fa fa-search"></i> 点击读取村民信息</div>
+				</div>
+			</div>
+
+			<div class="form-group form-group-lg">
+				<h1 style="font-weight:bold;" class="text-center" th:text="${prove.name}"></h1>
+			</div>
+			<div class="form-group form-group-lg">
+				<textarea class="form-control" placeholder="请输入证明内容" name="content" th:text="${prove.content}"></textarea>
+			</div>
+
+			<div class="form-group form-group-lg">
+				<h3 th:text="${prove.signed}" style="font-weight:bold;" class="text-right"></h3>
+				<p th:text="${#dates.format(curDate, 'yyyy-MM-dd')}" class="text-right"></p>
+			</div>
+
+			<div class="form-group form-group-lg">
+				<input type="hidden" name="token" value="${session.token}"/>
+				<button type="submit" class="btn btn-primary">确定提交</button>
+				<button type="button" class="btn btn-default" onclick="history.back(-1)">返回上级</button>
+			</div>
+		</div>
+	</body>
+</html>

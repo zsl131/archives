@@ -38,12 +38,15 @@
 						<td th:text="${#dates.format(obj.createDate, 'yyyy-MM-dd HH:mm')}">日期</td>
 						<td>
 							<div class="action-buttons">
+								<a class="green auth" sn="ProveTemplateController.addProve" title="开证明" th:href="'/admin/proveTemplate/addProve/'+${obj.id}">
+									<i class="fa fa-pencil-square-o"></i>开证明
+								</a>&nbsp;
 								<a class="green auth" sn="ProveTemplateController.update" title="修改" th:href="'/admin/proveTemplate/update/'+${obj.id}">
-									<i class="icon-pencil bigger-130"></i>
+									<i class="fa fa-pencil"></i>
 								</a>
 
 								<a class="delete-obj-href red auth" sn="ProveTemplateController.delete" th:title="'此操作不可逆，确定删除【'+${obj.name}+'】吗？'" th:href="'/admin/proveTemplate/delete/'+${obj.id}">
-									<i class="icon-trash bigger-130"></i>
+									<i class="fa fa-remove"></i>
 								</a>
 							</div>
 						</td>
